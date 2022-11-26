@@ -49,6 +49,8 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
+ // could be destroy and not delete
+  Category.delete()
 });
 
 module.exports = router;
