@@ -10,7 +10,7 @@ Product.belongsTo( , {
 });
 
 // Categories have many Products
-Category.hasMany(, {
+Category.hasMany( , {
 
 });
 // Products belongToMany Tags (through ProductTag)
@@ -20,7 +20,7 @@ Product.belongsToMany( , {
 });
 // Tags belongToMany Products (through ProductTag)
 
-Tag.belongsToMany(, {
+Tag.belongsToMany( , {
 
 });
 
