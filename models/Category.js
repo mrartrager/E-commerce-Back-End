@@ -12,6 +12,9 @@ Category.init(
     primaryKey: true,
     autoIncrement: true,
   },
+  category_name:{
+    
+  }
   {
     sequelize,
     timestamps: false,

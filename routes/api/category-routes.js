@@ -25,7 +25,7 @@ Category.findByPk(req.params.id, {
   include: [
     Product
   ],
-}).then((category) => res.status(200).json(category))
+}).then((categoryId) => res.status(200).json(categoryId))
 .catch((err) => {
   console.log(err);
   res.status(400).json(err)
@@ -35,7 +35,11 @@ Category.findByPk(req.params.id, {
 router.post('/', (req, res) => {
   // create a new category
   Category.create(req.body)
-  .then((category) => )
+  .then((category) => res.status(200).json(category))
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json(err)
+  })
 });
 
 router.put('/:id', (req, res) => {
@@ -44,7 +48,11 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-  }).then((cat))
+  }).then((category) => res.status(200).json(category))
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json(err)
+  })
 });
 
 router.delete('/:id', (req, res) => {
