@@ -21,11 +21,12 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
+  console.log(req.params.id)
 Category.findByPk(req.params.id, {
   include: [
     Product
   ],
-}).then((categoryId) => res.status(200).json(categoryId))
+}).then((category) => res.status(200).json(category))
 .catch((err) => {
   console.log(err);
   res.status(400).json(err)
@@ -33,6 +34,7 @@ Category.findByPk(req.params.id, {
 });
 
 router.post('/', (req, res) => {
+  console.log(req.body)
   // create a new category
   Category.create(req.body)
   .then((category) => res.status(200).json(category))
@@ -58,7 +60,15 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
  // could be destroy and not delete
-  Category.delete()
+  Category.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then((response) => res.status(200).json(response))
+  .catch((err) => {
+   console.log(err);
+   res.status(400).json(err)
+  })
 });
 
 module.exports = router;
