@@ -8,17 +8,15 @@ router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
-    include:[
-      Category,
-      {
-        model: Tag, through: ProductTag
-      },
-    ]
+    include: [
+      Category, 
+      { model: Tag, through: ProductTag },
+    ],
   }).then((productData) => res.status(200).json(productData))
-  .catch((err) => {
-    console.log(err);
-    res.status(400).json(err);
-  })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 // get one product
@@ -30,8 +28,8 @@ router.get('/:id', (req, res) => {
       Category, 
       {
         model: Tag, through: ProductTag
-      }
-    ]
+      },
+    ],
   }).then((productId) => res.status(200).json(productId))
   .catch((err) => {
     console.log(err);
@@ -114,8 +112,8 @@ router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
   Product.destroy({
     where: {
-      id: req.params.id,
-    }
+      id: req.params.id
+    },
   }).then((response) => res.status(200).json(response))
   .catch((err) => {
    console.log(err);
